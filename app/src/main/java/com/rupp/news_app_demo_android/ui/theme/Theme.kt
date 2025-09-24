@@ -9,6 +9,7 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
@@ -18,19 +19,12 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    primary = Primary,
+    onPrimary = OnPrimary,
+    background = Background,
+    onBackground = onBackground,
+    surface = Surface,
+    onSurface = OnSurface
 )
 
 @Composable
@@ -41,13 +35,27 @@ fun NewsappdemoandroidTheme(
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
+//        Starting from Android 12, Google introduced Material, which allows personalized UI themes by extracting colors from the user’s wallpaper.
+//        This affects:
+//                System UI (notifications, quick settings, etc.)
+//                Apps that support dynamic colors via dynamicDarkColorScheme and dynamicLightColorScheme.
+//                Without this, your app would not align with the system-wide personalization, making it look inconsistent.
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+            if (darkTheme) {
+                dynamicDarkColorScheme(context)
+            } else {
+                dynamicLightColorScheme(context).copy(
+                    background = Color.White,
+                    surface = Color.White
+                )
+            }
         }
 
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
+
+
     }
 
     MaterialTheme(
