@@ -15,6 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.rupp.news_app_demo_android.ui.main.MainScreen
 import com.rupp.news_app_demo_android.ui.onboarding.OnboardingScreen
 import com.rupp.news_app_demo_android.ui.theme.NewsappdemoandroidTheme
 import com.rupp.news_app_demo_android.utils.OnboardingUtil
@@ -35,7 +36,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     if (isOnboardingCompleted) {
-                        Greeting("Sopheak")
+                        MainScreen()
                     } else {
                         OnboardingScreen(
                             onFinished = {
