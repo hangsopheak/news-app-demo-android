@@ -2,6 +2,8 @@ package com.rupp.news_app_demo_android.ui.home
 
 import HomeArticleItems
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,9 +15,11 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Devices.PIXEL_5
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.rupp.news_app_demo_android.ArticleListByFlagActivity
 import com.rupp.news_app_demo_android.data.HomeData
 import com.rupp.news_app_demo_android.model.Article
 import com.rupp.news_app_demo_android.ui.theme.NewsappdemoandroidTheme
@@ -26,7 +30,8 @@ fun NewsSection(
     articleFlagEnum: ArticleFlagEnum,
     articles: List<Article>,
     ) {
-    SectionTitleBar(articleFlagEnum.description, onSeeMoreClicked = {  })
+    val context = LocalContext.current
+    SectionTitleBar(articleFlagEnum.description, onSeeMoreClicked = {onSeeMoreClicked(context, articleFlagEnum.id)})
     HomeArticleItems(articles)
     Spacer(modifier = Modifier.size(10.dp))
 }
@@ -50,4 +55,10 @@ fun HomeScreenContent() {
             NewsSection(ArticleFlagEnum.LATEST_NEWS, HomeData.latestArticles)
         }
     }
+}
+
+fun onSeeMoreClicked(context: Context,  articleFlagId: Int) {
+    val intent = Intent(context, ArticleListByFlagActivity::class.java)
+    intent.putExtra("article_flag_id", articleFlagId)
+    context.startActivity(intent)
 }
