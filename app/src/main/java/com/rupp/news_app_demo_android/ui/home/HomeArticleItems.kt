@@ -1,3 +1,4 @@
+import android.content.Intent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,9 +24,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.rupp.news_app_demo_android.ArticleDetailActivity
 import com.rupp.news_app_demo_android.data.HomeData
 import com.rupp.news_app_demo_android.model.Article
 import com.rupp.news_app_demo_android.ui.theme.NewsappdemoandroidTheme
+import com.rupp.news_app_demo_android.ui.theme.Typography
 
 @Composable
 fun HomeArticleItems(articles: List<Article>){
@@ -39,9 +42,9 @@ fun HomeArticleItems(articles: List<Article>){
                 ArticleCard(
                     article = article,
                     onClick = {
-//                    val intent = Intent(context, ArticleDetailActivity::class.java)
-//                    intent.putExtra("article_id", article.id)
-//                    context.startActivity(intent)
+                    val intent = Intent(context, ArticleDetailActivity::class.java)
+                    intent.putExtra("article_id", article.id)
+                    context.startActivity(intent)
                     }
                 )
             }
@@ -82,20 +85,20 @@ fun ArticleCard(article: Article, onClick: () -> Unit = {}) {
 
             Text(
                 text = article.title,
-                style = MaterialTheme.typography.titleMedium,
+                style = Typography.titleMedium,
                 fontSize = 16.sp,
                 maxLines = 2,
                 modifier = Modifier.padding(bottom = 4.dp)
             )
             Text(
                 text = "By ${article.author}",
-                style = MaterialTheme.typography.bodySmall,
+                style = Typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = article.content,
-                style = MaterialTheme.typography.bodyMedium,
+                style = Typography.bodyMedium,
                 maxLines = 2,
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
