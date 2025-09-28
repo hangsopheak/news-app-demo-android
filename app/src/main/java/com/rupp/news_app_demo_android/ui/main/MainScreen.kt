@@ -27,8 +27,10 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import com.rupp.news_app_demo_android.ui.bookmark.presentation.BookMarkScreenContent
 import com.rupp.news_app_demo_android.ui.explore.presentation.ExploreScreenContent
 import com.rupp.news_app_demo_android.ui.home.HomeScreenContent
+import com.rupp.news_app_demo_android.ui.more.presentation.MoreScreenContent
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -79,8 +81,8 @@ fun MainScreen() {
             when (selectedItem) {
                 0 -> HomeScreenContent()
                 1 -> ExploreScreenContent()
-//                2 -> BookMarkScreenContent()
-//                3 -> MoreScreenContent()
+                2 -> BookMarkScreenContent()
+                3 -> MoreScreenContent()
             }
         }
     }
