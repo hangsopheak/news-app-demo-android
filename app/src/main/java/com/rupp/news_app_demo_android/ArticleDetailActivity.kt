@@ -11,9 +11,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.rupp.news_app_demo_android.data.ArticleData
-import com.rupp.news_app_demo_android.model.Article
-import com.rupp.news_app_demo_android.ui.article.ArticleScreen
+import com.rupp.news_app_demo_android.shared.data.local.ArticleData
+import com.rupp.news_app_demo_android.shared.domain.model.Article
+import com.rupp.news_app_demo_android.feature.article.presentation.ArticleScreen
 import com.rupp.news_app_demo_android.ui.theme.NewsappdemoandroidTheme
 
 class ArticleDetailActivity : ComponentActivity() {
