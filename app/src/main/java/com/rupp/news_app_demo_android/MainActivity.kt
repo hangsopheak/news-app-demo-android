@@ -15,10 +15,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.rupp.news_app_demo_android.ui.main.MainScreen
-import com.rupp.news_app_demo_android.ui.onboarding.OnboardingScreen
+import com.rupp.news_app_demo_android.feature.main.presentation.MainScreen
+import com.rupp.news_app_demo_android.feature.onboarding.presentation.OnboardingScreen
 import com.rupp.news_app_demo_android.ui.theme.NewsappdemoandroidTheme
-import com.rupp.news_app_demo_android.utils.OnboardingUtil
+import com.rupp.news_app_demo_android.feature.onboarding.util.OnboardingUtil
 
 class MainActivity : ComponentActivity() {
     private val onboardingUtil by lazy { OnboardingUtil(this) }

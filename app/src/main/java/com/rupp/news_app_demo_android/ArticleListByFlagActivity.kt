@@ -19,11 +19,11 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.rupp.news_app_demo_android.data.ArticleData
-import com.rupp.news_app_demo_android.model.Article
-import com.rupp.news_app_demo_android.ui.explore.presentation.ArticleCardVertical
+import com.rupp.news_app_demo_android.shared.data.local.ArticleData
+import com.rupp.news_app_demo_android.shared.domain.model.Article
+import com.rupp.news_app_demo_android.shared.presentation.ArticleCardVertical
 import com.rupp.news_app_demo_android.ui.theme.NewsappdemoandroidTheme
-import com.rupp.news_app_demo_android.utils.ArticleFlagEnum
+import com.rupp.news_app_demo_android.feature.home.domain.ArticleFlagEnum
 
 class ArticleListByFlagActivity : ComponentActivity() {
 
