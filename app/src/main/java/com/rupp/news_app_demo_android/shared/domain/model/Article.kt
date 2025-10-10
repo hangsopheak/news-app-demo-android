@@ -1,5 +1,6 @@
 package com.rupp.news_app_demo_android.shared.domain.model
 
+import com.google.gson.annotations.SerializedName
 import java.time.Instant
 import java.time.temporal.ChronoUnit
 import java.util.Date
