@@ -2,6 +2,12 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    //The Hilt Gradle Plugin is the invisible helper that does all the setup work
+    // behind the scenes. It's not a library you use in your code; it's a build tool
+    // that looks at your Hilt annotations and automatically generates and connects all
+    // the complex dependency injection code for the Android framework.
+    id("com.google.dagger.hilt.android")
+    kotlin("kapt")
 }
 
 android {
@@ -40,6 +46,13 @@ android {
 }
 
 dependencies {
+
+    // Hilt
+    implementation("com.google.dagger:hilt-android:2.57.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.57.1")
+    // Hilt + Compose integration
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+
 
     implementation("io.coil-kt:coil-compose:2.2.2")
     implementation("androidx.compose.material:material-icons-extended:1.7.8")
