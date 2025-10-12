@@ -28,15 +28,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.rupp.news_app_demo_android.shared.data.local.ArticleData
 import com.rupp.news_app_demo_android.shared.domain.model.Article
 import com.rupp.news_app_demo_android.shared.presentation.ArticleCardVertical
 import com.rupp.news_app_demo_android.ui.theme.NewsappdemoandroidTheme
 import com.rupp.news_app_demo_android.feature.home.domain.ArticleFlagEnum
 import com.rupp.news_app_demo_android.feature.home.presentation.ArticleByFlagViewModel
 import com.rupp.news_app_demo_android.shared.data.repository.ArticleRepository
-import kotlin.collections.get
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class ArticleListByFlagActivity : ComponentActivity() {
 
     var articleFlagId: Int = 0;
