@@ -106,7 +106,7 @@ fun main() = runBlocking {
     // Simulate a button click on the UI/Main thread
     println("\nUser clicks 'Load Profile' button...")
 
-    launch(Dispatchers.Main) { // In a real Android app, this would be on the UI thread
+    launch(Dispatchers.Unconfined) { // In a real Android app, this would be on the UI thread
         println("UI: Showing loading indicator...")
 
         // Run heavy I/O operations on the IO dispatcher
@@ -126,12 +126,12 @@ fun main() = runBlocking {
         val processedData = withContext(Dispatchers.Default) {
             println("Default Dispatcher: Processing the retrieved data...")
             // Simulate a heavy computational task
-            delay(500)
+            delay(2000)
             "Processed: $profileData & $postsData"
         }
 
         // Switch back to the Main dispatcher to update the UI
-        withContext(Dispatchers.Main) {
+        withContext(Dispatchers.Unconfined) {
             println("UI: Hiding loading indicator.")
             println("UI: Displaying processed data: '$processedData'")
         }
@@ -140,3 +140,5 @@ fun main() = runBlocking {
     println("Main thread is free to do other work while coroutines run in the background.")
     delay(5000) // Keep main thread alive to see all logs
 }
+
+
