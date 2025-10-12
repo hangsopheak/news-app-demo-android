@@ -28,6 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.rupp.news_app_demo_android.shared.domain.model.Article
 import com.rupp.news_app_demo_android.shared.presentation.ArticleCardVertical
 import com.rupp.news_app_demo_android.ui.theme.NewsappdemoandroidTheme
@@ -50,8 +51,7 @@ class ArticleListByFlagActivity : ComponentActivity() {
 
 
         setContent {
-            val repository = ArticleRepository()
-            val viewModel = remember { ArticleByFlagViewModel(repository) }
+            val viewModel : ArticleByFlagViewModel = hiltViewModel()
             val state by viewModel.uiState.collectAsState()
             val context = LocalContext.current
 
