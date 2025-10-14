@@ -24,7 +24,7 @@ import java.util.Date
  * @property retrofit The lazily-initialized Retrofit instance ready for use.
  */
 object RetrofitInstance {
-    private const val BASE_URL = "https://news-db-2.vercel.app/"
+    private const val BASE_URL = "https://news-db.vercel.app/"
 
     //  Interceptor for adding custom headers
 
