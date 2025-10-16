@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.rupp.news_app_demo_android.ArticleDetailActivity
 import com.rupp.news_app_demo_android.feature.bookmark.presentation.onClickArticle
 import com.rupp.news_app_demo_android.shared.data.local.ArticleData
@@ -42,14 +43,7 @@ import kotlin.collections.get
 @Preview
 fun ExploreScreenContent() {
 
-    val articleRepository = remember { ArticleRepository() }
-    val categoryRepository = remember { CategoryRepository() }
-    val viewModel = remember {
-        ExploreViewModel(
-            articleRepository = articleRepository,
-            categoryRepository = categoryRepository
-        )
-    }
+    val viewModel : ExploreViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsState()
     val context = LocalContext.current
 

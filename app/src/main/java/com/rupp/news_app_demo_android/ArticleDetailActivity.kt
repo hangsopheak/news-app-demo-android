@@ -20,6 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.rupp.news_app_demo_android.shared.data.local.ArticleData
 import com.rupp.news_app_demo_android.shared.domain.model.Article
 import com.rupp.news_app_demo_android.feature.article.presentation.ArticleScreen
@@ -40,8 +41,7 @@ class ArticleDetailActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val repository = remember { ArticleRepository() }
-            val viewModel = remember { ArticleViewModel(repository) }
+            val viewModel : ArticleViewModel = hiltViewModel()
             val state by viewModel.uiState.collectAsState()
             val context = LocalContext.current
 
