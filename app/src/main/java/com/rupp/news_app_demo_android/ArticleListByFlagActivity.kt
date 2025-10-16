@@ -35,8 +35,10 @@ import com.rupp.news_app_demo_android.ui.theme.NewsappdemoandroidTheme
 import com.rupp.news_app_demo_android.feature.home.domain.ArticleFlagEnum
 import com.rupp.news_app_demo_android.feature.home.presentation.ArticleByFlagViewModel
 import com.rupp.news_app_demo_android.shared.data.repository.ArticleRepository
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.collections.get
 
+@AndroidEntryPoint
 class ArticleListByFlagActivity : ComponentActivity() {
 
     var articleFlagId: Int = 0;

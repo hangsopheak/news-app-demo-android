@@ -26,7 +26,9 @@ import com.rupp.news_app_demo_android.feature.article.presentation.ArticleScreen
 import com.rupp.news_app_demo_android.feature.article.presentation.ArticleViewModel
 import com.rupp.news_app_demo_android.shared.data.repository.ArticleRepository
 import com.rupp.news_app_demo_android.ui.theme.NewsappdemoandroidTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ArticleDetailActivity : ComponentActivity() {
 
     private var articleId:Int = 0;
