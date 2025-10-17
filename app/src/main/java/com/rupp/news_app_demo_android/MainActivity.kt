@@ -19,7 +19,9 @@ import com.rupp.news_app_demo_android.feature.main.presentation.MainScreen
 import com.rupp.news_app_demo_android.feature.onboarding.presentation.OnboardingScreen
 import com.rupp.news_app_demo_android.ui.theme.NewsappdemoandroidTheme
 import com.rupp.news_app_demo_android.feature.onboarding.util.OnboardingUtil
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val onboardingUtil by lazy { OnboardingUtil(this) }
     override fun onCreate(savedInstanceState: Bundle?) {

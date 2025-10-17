@@ -25,6 +25,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Devices.PIXEL_5
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.rupp.news_app_demo_android.ArticleListByFlagActivity
 import com.rupp.news_app_demo_android.feature.home.data.local.HomeData
 import com.rupp.news_app_demo_android.shared.domain.model.Article
@@ -49,8 +50,7 @@ fun NewsSection(
 @Preview(showBackground = true, device = PIXEL_5)
 fun HomeScreenContent() {
 
-    val repository = remember { ArticleRepository() }
-    val viewModel =  HomeViewModel(repository)
+    val viewModel : HomeViewModel = hiltViewModel()
 
     val state by viewModel.uiState.collectAsState()
     val context = LocalContext.current
