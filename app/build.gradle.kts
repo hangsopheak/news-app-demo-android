@@ -28,8 +28,28 @@ android {
     }
 
     buildTypes {
+
+        debug {
+            // Debug version points to dev/staging environment
+            buildConfigField("String", "API_BASE_URL", "\"${project.findProperty("API_BASE_URL")}\"")
+            buildConfigField("String", "DB_NAME", "\"${project.findProperty("DB_NAME")}\"")
+
+            // Helpful for debugging
+            isDebuggable = true
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
+        }
+
         release {
-            isMinifyEnabled = false
+            // Release version points to production
+            buildConfigField("String", "API_BASE_URL", "\"${project.findProperty("API_BASE_URL_PROD")}\"")
+            buildConfigField("String", "DB_NAME", "\"${project.findProperty("DB_NAME_PROD")}\"")
+
+            //isMinifyEnabled = true is a setting in your Android app's build.gradle.kts
+            // file that enables tools to make your app smaller and more secure for a release build. It activate
+            // 1. Code Shrinking (Minification)
+            // 2. Code Obfuscation
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -46,6 +66,27 @@ android {
     buildFeatures {
         compose = true
         android.buildFeatures.buildConfig = true
+    }
+
+    flavorDimensions += "edition"
+    productFlavors {
+        create("free") {
+            dimension = "edition"
+            applicationIdSuffix = ".free"
+            versionNameSuffix = "-free"
+
+            // Free edition config
+            buildConfigField("Boolean", "IS_PREMIUM", "false")
+        }
+
+        create("premium") {
+            dimension = "edition"
+            applicationIdSuffix = ".premium"
+            versionNameSuffix = "-premium"
+
+            // Premium edition config
+            buildConfigField("Boolean", "IS_PREMIUM", "true")
+        }
     }
 }
 
