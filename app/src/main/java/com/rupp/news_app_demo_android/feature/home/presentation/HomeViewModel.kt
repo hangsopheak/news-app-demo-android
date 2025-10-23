@@ -4,11 +4,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rupp.news_app_demo_android.shared.data.repository.ArticleRepository
 import com.rupp.newsapp.core.network.ApiResult
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HomeViewModel(private val repository: ArticleRepository) : ViewModel()  {
+
+@HiltViewModel
+class HomeViewModel @Inject constructor (private val repository: ArticleRepository) : ViewModel()  {
     /**
      * Private mutable state flow that holds the current state of the Home screen.
      * This is internal to the ViewModel and should not be exposed to the UI directly.

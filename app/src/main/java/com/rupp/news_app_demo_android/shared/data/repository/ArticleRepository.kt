@@ -5,10 +5,11 @@ import com.rupp.news_app_demo_android.shared.domain.model.Article
 import com.rupp.newsapp.core.network.ApiResult
 import com.rupp.newsapp.core.network.NetworkUtils
 import com.rupp.newsapp.core.network.RetrofitInstance
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class ArticleRepository {
-    private val api = RetrofitInstance.retrofit.create(ArticleApiService::class.java)
-
+@Singleton
+class ArticleRepository @Inject constructor(private val api : ArticleApiService) {
     suspend fun getLatestArticles(): ApiResult<List<Article>> {
         return NetworkUtils.safeApiCall { api.getArticles(isLatest = true) }
     }
