@@ -1,6 +1,7 @@
 package com.rupp.newsapp.core.network
 
 import com.google.gson.GsonBuilder
+import com.rupp.news_app_demo_android.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -24,13 +25,13 @@ import java.util.Date
  * @property retrofit The lazily-initialized Retrofit instance ready for use.
  */
 object RetrofitInstance {
-    private const val BASE_URL = "https://news-db.vercel.app/"
+    private const val BASE_URL = BuildConfig.API_BASE_URL
 
     //  Interceptor for adding custom headers
 
     private val headerInterceptor = Interceptor { chain ->
         val request = chain.request().newBuilder()
-            .addHeader("X-DB-NAME",     "fdc77c85-002d-4fb8-992c-fd99a76b1323")
+            .addHeader("X-DB-NAME", BuildConfig.DB_NAME)
             .build()
         chain.proceed(request)
     }
