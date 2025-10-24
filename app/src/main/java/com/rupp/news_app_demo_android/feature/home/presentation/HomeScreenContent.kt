@@ -27,6 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.rupp.news_app_demo_android.ArticleListByFlagActivity
+import com.rupp.news_app_demo_android.BuildConfig
 import com.rupp.news_app_demo_android.feature.home.data.local.HomeData
 import com.rupp.news_app_demo_android.shared.domain.model.Article
 import com.rupp.news_app_demo_android.ui.theme.NewsappdemoandroidTheme
@@ -71,7 +72,13 @@ fun HomeScreenContent() {
                     }
                 }
                 else -> {
-                    NewsSection(ArticleFlagEnum.BREAKING_NEWS, state.breakingArticles)
+                    // clean and rebuild first before being able to import the namespace
+                    if (BuildConfig.IS_PREMIUM) {
+                        NewsSection(
+                            ArticleFlagEnum.BREAKING_NEWS,
+                            state.breakingArticles
+                        )
+                    }
                     NewsSection(ArticleFlagEnum.FEATURED_NEWS, state.featuredArticles)
                     NewsSection(ArticleFlagEnum.LATEST_NEWS, state.latestArticles)
                 }
